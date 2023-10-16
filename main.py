@@ -19,7 +19,7 @@ class MyApp(App):
     def build(self):
         self.title = 'Automation'
         Window.set_icon('ROBO_4.png')
-        Window.clearcolor = (1, 0, 0, 1)
+        Window.clearcolor = (1, 1, 1, 1)
 
         layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
         
