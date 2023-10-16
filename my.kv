@@ -1,2 +1,10 @@
+#:import Window kivy.core.window.Window
+
 <Button>:
-    font_size: 32
+    font_size: 18
+    color: 1, 1, 1, 1
+    background_normal: ''
+    background_color: 0, 0, 0, 1
+    size_hint: 0.3, None  # Definindo a largura como 60% e altura como None
+    height: Window.height * 0.1  # Definindo a altura como 30% da janela
+    pos_hint: {'center_x': 0.5}

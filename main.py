@@ -11,26 +11,42 @@ from kivy.uix.filechooser import FileChooserIconView
 from kivy.uix.label import Label
 import time
 from kivy.core.window import Window
+from kivy.uix.floatlayout import FloatLayout
+from kivy.graphics import Rectangle
+from kivy.core.image import Image as CoreImage
 
 class MyApp(App):
     data_from_excel = []
     
-
     def build(self):
         self.title = 'Automation'
         Window.set_icon('ROBO_4.png')
-        Window.clearcolor = (1, 1, 1, 1)
+        
+        main_layout = FloatLayout()  # Container principal
 
-        layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
+        # Mova o código de gradiente ABAIXO da definição de main_layout
+        with main_layout.canvas.before:
+            self.texture = CoreImage('cool-background.png').texture
+            # Sem a linha abaixo, pois não queremos repetir a textura
+            # self.texture.wrap = 'repeat'
+            Rectangle(pos=(0, 0), size=(Window.width, Window.height), texture=self.texture)
+
+
+        box_layout = BoxLayout(orientation='vertical', padding=10, spacing=10,
+                               size_hint=(1, 0.3),  # 30% da altura da tela
+                               pos_hint={'center_x': 0.5, 'center_y': 0.5})  # Centralizar no meio da tela
         
         import_excel_button = Button(text="Importar Planilha", on_press=self.show_filechooser)
         open_browser_button = Button(text="Abrir Navegador", on_press=self.open_browser)
         start_loop_button = Button(text="Iniciar Loop", on_press=self.start_loop)
 
-        layout.add_widget(import_excel_button)
-        layout.add_widget(open_browser_button)
-        layout.add_widget(start_loop_button)
-        return layout
+        box_layout.add_widget(import_excel_button)
+        box_layout.add_widget(open_browser_button)
+        box_layout.add_widget(start_loop_button)
+
+        main_layout.add_widget(box_layout)  # Adicione o BoxLayout ao FloatLayout
+        return main_layout
+
 
     def show_filechooser(self, instance):
         self.filechooser = FileChooserIconView(filters=['*.xlsx'])
