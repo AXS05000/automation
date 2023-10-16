@@ -1,10 +1,18 @@
 #:import Window kivy.core.window.Window
 
 <Button>:
-    font_size: 18
+    font_size: 28
+    font_name: 'Teko-VariableFont_wght.ttf'
     color: 1, 1, 1, 1
     background_normal: ''
-    background_color: 0, 0, 0, 1
+    background_color: 0, 0, 0, 0  # Fazendo com que seja completamente transparente
     size_hint: 0.3, None  # Definindo a largura como 60% e altura como None
-    height: Window.height * 0.1  # Definindo a altura como 30% da janela
+    height: str(Window.height * 0.1)  # Definindo a altura como 30% da janela
     pos_hint: {'center_x': 0.5}
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 0.5  # Definindo a cor com a opacidade desejada aqui
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20,]  # Você pode ajustar esse valor para alterar o raio do canto arredondado

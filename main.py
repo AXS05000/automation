@@ -26,7 +26,7 @@ class MyApp(App):
 
         # Mova o código de gradiente ABAIXO da definição de main_layout
         with main_layout.canvas.before:
-            self.texture = CoreImage('cool-background.png').texture
+            self.texture = CoreImage('cool-background-1.png').texture
             # Sem a linha abaixo, pois não queremos repetir a textura
             # self.texture.wrap = 'repeat'
             Rectangle(pos=(0, 0), size=(Window.width, Window.height), texture=self.texture)
