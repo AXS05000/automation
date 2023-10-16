@@ -10,7 +10,7 @@ from kivy.uix.popup import Popup
 from kivy.uix.filechooser import FileChooserIconView
 from kivy.uix.label import Label
 import time
-
+from kivy.core.window import Window
 
 class MyApp(App):
     data_from_excel = []
@@ -18,6 +18,8 @@ class MyApp(App):
 
     def build(self):
         self.title = 'Automation'
+        Window.set_icon('ROBO_4.png')
+        Window.clearcolor = (1, 0, 0, 1)
 
         layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
         
