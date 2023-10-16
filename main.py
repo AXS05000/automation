@@ -14,8 +14,11 @@ import time
 
 class MyApp(App):
     data_from_excel = []
+    
 
     def build(self):
+        self.title = 'Automation'
+
         layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
         
         import_excel_button = Button(text="Importar Planilha", on_press=self.show_filechooser)
